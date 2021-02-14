@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import '../App.css'
+
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import allActions from "../actions";
 
 const Movies = () => {
-	return <div>Movies</div>;
+	const dispatch = useDispatch();
+
+	const { movies } = useSelector((state) => state.movies);
+
+	useEffect(() => {
+		dispatch(allActions.moviesActions.getMovies());
+	}, []);
+
+	return (
+		<div className='category'>
+		<div className="grid" style={{ margin: "1rem 0" }}>
+			{movies.map((movie) => (
+				<Link to={`/movie/${movie.id}`} key={movie.id}>
+					<div className="movieCard">
+						<div className="movieCard__poster">
+							<img
+								src={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}
+							></img>
+						</div>
+						<div className="movieCard__details">
+							<p>{movie.title}</p>
+							<p>
+								{new Intl.DateTimeFormat("en-GB", {
+									month: "short",
+									year: "numeric",
+									day: "2-digit",
+								}).format(Date.parse(movie.release_date))}
+							</p>
+						</div>
+					</div>
+				</Link>
+			))}
+			</div>
+			</div>
+	);
 };
 
 export default Movies;

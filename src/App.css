@@ -1,159 +1,170 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-	background-color: #282c34;
-	background: #fff;
-	color: #61dafb;
-	color: #282c34;
+  background-color: #282c34;
+  background: #fff;
+  color: #61dafb;
+  color: #282c34;
 }
 
 img {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .App {
-	font-size: calc(10px + 2vmin);
-	font-size: 20px;
+  font-size: calc(10px + 2vmin);
+  font-size: 20px;
 }
 
 .container {
-	/* min-width: 300px;
+  /* min-width: 300px;
 	max-width: 1200px; */
-	margin: auto;
-	padding: 20px;
+  margin: auto;
+  padding: 20px;
 }
 
 .category {
-	margin: 2rem auto;
+  margin: 2rem auto;
 }
 
 .grid {
-	display: grid;
-	margin: auto;
-	gap: 2rem;
-	justify-content: center !important;
+  display: grid;
+  margin: auto;
+  gap: 2rem;
+  justify-content: center !important;
 }
 .movieCard {
-	height: 50vh;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 50vh;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .movieCard__poster {
-	height: 90%;
-	/* height: 300px; */
+  height: 90%;
+  /* height: 300px; */
 }
 
 .wrapper {
-	width: 100vw;
-	min-height: 100vh;
-	max-height: max-content;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	display: flex;
-	/* justify-content: center; */
+  width: 100vw;
+  min-height: 100vh;
+  max-height: max-content;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  /* justify-content: center; */
 }
 
 .wrapper::before {
-	position: absolute;
-	content: "";
-	min-width: 100%;
-	min-height: 100%;
-	left: 0;
-	top: 0;
-	background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  content: "";
+  min-width: 100%;
+  min-height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .details {
-	position: relative;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	color: #fff;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
 }
 
 .desc__heading {
-	margin: 20px 0;
-	font-family: "Roboto Mono";
+  margin: 20px 0;
+  font-family: "Roboto Mono";
 }
 
 .desc__text {
-	font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro";
 }
 
 .tagline {
-	font-style: italic;
+  font-style: italic;
+}
+
+.genre {
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.genre__name {
+  padding: 5px 10px;
+  margin: 5px;
+  background: #61dafb3d;
 }
 
 @media (min-width: 320px) {
-	.grid {
-		grid-template-columns: 1fr;
-	}
+  .grid {
+    grid-template-columns: 1fr;
+  }
 
-	.wrapper {
-		padding: 20px;
-	}
+  .wrapper {
+    padding: 20px;
+  }
 
-	.poster,
-	.desc {
-		width: 100%;
-	}
-	.details {
-		flex-direction: column;
-	}
+  .poster,
+  .desc {
+    width: 100%;
+  }
+  .details {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 425px) {
-	.grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 500px) {
-	.grid {
-		grid-template-columns: repeat(3, 1fr);
-	}
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 675px) {
 }
 
 @media (min-width: 768px) {
-	.grid {
-		grid-template-columns: repeat(4, 1fr);
-	}
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
-	.wrapper {
-		padding: 50px;
-		align-items: flex-start;
-	}
-	.poster {
-		min-width: 300px;
-		max-width: 380px;
-		height: auto;
-	}
+  .wrapper {
+    padding: 50px;
+    align-items: flex-start;
+  }
+  .poster {
+    min-width: 300px;
+    max-width: 380px;
+    height: auto;
+  }
 
-	.desc {
-		max-width: 800px;
-	}
+  .desc {
+    max-width: 800px;
+  }
 
-	.details {
-		flex-direction: row;
-	}
+  .details {
+    flex-direction: row;
+  }
 
-	.category {
-		width: 90%;
-		margin: auto;
-	}
+  .category {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 @media (min-width: 1000px) {
-	.category {
-		width: 70%;
-		margin: auto;
-	}
+  .category {
+    width: 70%;
+    margin: auto;
+  }
 }

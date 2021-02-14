@@ -38,12 +38,14 @@ const Movie = () => {
 					<h3 className="desc__heading">Overview</h3>
 					<p className="desc__text">{details.overview}</p>
 					<div className="desc__text">
-						<span>Genres:</span>
+						<span className='genre'>Genres:</span>
 						{details.genres.map((genre) => (
-							<span>{genre.name}</span>
+							<span className='genre__name'>{genre.name}</span>
 						))}
 					</div>
-					<p className="desc__text">Runtime: {details.runtime} mins</p>
+						{
+							details.runtime ? <p className="desc__text">Runtime: {details.runtime} mins</p> : ''
+					}
 				</div>
 			</div>
 		</div>
