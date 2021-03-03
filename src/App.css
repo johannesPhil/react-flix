@@ -145,6 +145,17 @@ img {
 	font-style: italic;
 }
 
+.genre {
+	display: inline-block;
+	margin: 10px 0;
+}
+
+.genre__name {
+	padding: 5px 10px;
+	margin: 5px;
+	background: #61dafb3d;
+}
+
 .genres {
 	margin: 10px 0;
 	display: flex;
