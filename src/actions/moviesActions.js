@@ -11,7 +11,9 @@ const seriesURL = "https://api.themoviedb.org/3/tv/";
 // axios.get(trendingURL).then((res) => console.log({ trend: res.data }));
 // axios.get(tvseriesURL).then((res) => console.log(res.data));
 
-const getMovies = () => (dispatch) => {
+export const getMovies = () => (dispatch) => {
+	dispatch(loading());
+
 	axios.get(moviesURL).then((res) =>
 		dispatch({
 			type: "GET_MOVIES",
@@ -20,7 +22,9 @@ const getMovies = () => (dispatch) => {
 	);
 };
 
-const getTrending = () => (dispatch) => {
+export const getTrending = () => (dispatch) => {
+	dispatch(loading());
+
 	axios.get(trendingURL).then((res) =>
 		dispatch({
 			type: "GET_TRENDING",
@@ -29,7 +33,9 @@ const getTrending = () => (dispatch) => {
 	);
 };
 
-const getDetails = (id) => (dispatch) => {
+export const getDetails = (id) => (dispatch) => {
+	dispatch(loading());
+
 	axios
 		.get(`${movieURL}${id}?api_key=${API_KEY}`)
 		.then((res) => {
@@ -50,10 +56,16 @@ const getDetails = (id) => (dispatch) => {
 				payload: res.data,
 			});
 		})
-		.catch((error) => console.log(error));
+		.catch((error) =>
+			dispatch({
+				type: "ERROR",
+			})
+		);
 };
 
-const getTvSeries = () => (dispatch) => {
+export const getTvSeries = () => (dispatch) => {
+	dispatch(loading());
+
 	axios.get(tvseriesURL).then((res) =>
 		dispatch({
 			type: "GET_TV_SERIES",
@@ -62,9 +74,15 @@ const getTvSeries = () => (dispatch) => {
 	);
 };
 
-export default {
-	getMovies,
-	getTrending,
-	getTvSeries,
-	getDetails,
+export const loading = () => {
+	return {
+		type: "LOADING",
+	};
 };
+
+// export default {
+// 	getMovies,
+// 	getTrending,
+// 	getTvSeries,
+// 	getDetails,
+// };

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import allActions from "../actions";
+import { getTvSeries } from "../actions/moviesActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const TvSeries = () => {
@@ -8,13 +8,17 @@ const TvSeries = () => {
 	const { tvseries } = useSelector((state) => state.movies);
 
 	useEffect(() => {
-		dispatch(allActions.moviesActions.getTvSeries());
-	}, []);
+		dispatch(getTvSeries());
+	}, [dispatch]);
 
 	return (
 		<div className="grid" style={{ margin: "1rem 0" }}>
 			{tvseries.slice(0, 8).map((series) => (
-				<Link to={`/movie/${series.id}`} key={series.id}>
+				<Link
+					to={`/movie/${series.id}`}
+					key={series.id}
+					className="movie__Link"
+				>
 					<div className="movieCard">
 						<div className="movieCard__poster">
 							<img

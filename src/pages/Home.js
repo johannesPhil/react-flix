@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Movies from "../components/Movies";
 import Trending from "../components/Trending";
 import TvSeries from "../components/TvSeries";
 
 const Home = () => {
+	// const { loading } = useSelector((state) => state.movies);
+
+	// useEffect(() => {}, [loading]);
+
 	return (
 		<div className="container">
 			<div className="category">

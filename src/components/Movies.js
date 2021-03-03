@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import allActions from "../actions";
+import { getMovies } from "../actions/moviesActions";
 
 const Movies = () => {
 	const dispatch = useDispatch();
@@ -9,13 +9,13 @@ const Movies = () => {
 	const { movies } = useSelector((state) => state.movies);
 
 	useEffect(() => {
-		dispatch(allActions.moviesActions.getMovies());
-	}, []);
+		dispatch(getMovies());
+	}, [dispatch]);
 
 	return (
 		<div className="grid" style={{ margin: "1rem 0" }}>
 			{movies.slice(0, 8).map((movie) => (
-				<Link to={`/movie/${movie.id}`} key={movie.id}>
+				<Link to={`/movie/${movie.id}`} key={movie.id} className="movie__Link">
 					<div className="movieCard">
 						<div className="movieCard__poster">
 							<img

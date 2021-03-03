@@ -1,7 +1,7 @@
-import moviesActions from "./moviesActions";
+// import moviesActions from "./moviesActions";
 
-const allActions = {
-	moviesActions,
-};
+// const allActions = {
+// 	moviesActions,
+// };
 
-export default allActions;
+// export default allActions;
