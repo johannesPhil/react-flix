@@ -3,6 +3,9 @@ const initialState = {
 	trending: [],
 	tvseries: [],
 	details: [],
+	// video: [],
+	favourite: [],
+	searchResult: [],
 	error: "",
 	loading: false,
 };
@@ -33,18 +36,69 @@ const moviesReducer = (state = initialState, action) => {
 				details: action.payload,
 				loading: false,
 			};
-		case "ERROR":
+		case "CLEAR_DETAILS":
 			return {
 				...state,
-				details: null,
+				details: [],
+			};
+		case "GET_FAVOURITE":
+			return {
+				...state,
+				favourite: action.payload,
 				loading: false,
 			};
+		case "SEARCH":
+			return {
+				...state,
+				searchResult: action.payload,
+				loading: false,
+			};
+		case "CLEAR_SEARCH":
+			return {
+				...state,
+				searchResult: [],
+			};
+		// case "GET_VIDEO":
+		// 	return {
+		// 		...state,
+		// 		video: action.payload,
+		// 	};
+
 		case "LOADING":
 			return {
 				...state,
 				loading: true,
 			};
-
+		case "DETAILS_ERROR":
+			return {
+				...state,
+				details: null,
+				loading: false,
+			};
+		case "MOVIES_ERROR":
+			return {
+				...state,
+				movies: null,
+				loading: false,
+			};
+		case "TRENDING_ERROR":
+			return {
+				...state,
+				trending: null,
+				loading: false,
+			};
+		case "SERIES_ERROR":
+			return {
+				...state,
+				tvseries: null,
+				loading: false,
+			};
+		case "SEARCH_ERROR":
+			return {
+				...state,
+				searchResult: null,
+				loading: false,
+			};
 		default:
 			return state;
 	}

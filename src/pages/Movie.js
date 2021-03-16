@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails } from "../actions/moviesActions";
+import { getDetails, clearDetails } from "../actions/moviesActions";
+
+import default_poster from "../assets/default_poster.jpg";
 
 import {
 	CircularProgressbar,
@@ -14,15 +16,20 @@ const Movie = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const { details, loading, error } = useSelector((state) => state.movies);
-	console.log(details);
+
 	useEffect(() => {
 		dispatch(getDetails(id));
+		return function cleanup() {
+			dispatch(clearDetails());
+		};
 	}, [dispatch, id]);
 
 	return (
 		<div>
 			{details === null ? (
-				<p>Sorry</p>
+				<div className="error">
+					Sorry, couldn't load details for selected Movie/TvShow
+				</div>
 			) : (
 				<div>
 					{loading ? (
@@ -37,7 +44,11 @@ const Movie = () => {
 							<div className="details">
 								<div className="poster">
 									<img
-										src={`http://image.tmdb.org/t/p/original${details.poster_path}`}
+										src={
+											details.poster_path
+												? `http://image.tmdb.org/t/p/original${details.poster_path}`
+												: default_poster
+										}
 										alt=""
 									/>
 								</div>
@@ -54,11 +65,13 @@ const Movie = () => {
 									{details.genres ? (
 										<div className="genres desc__text">
 											<h3>Genres:</h3>
-											{details.genres.map((genre) => (
-												<div className="genres__container">
-													<div className="genre">{genre.name}</div>
-												</div>
-											))}
+											<div className="genres__container">
+												{details.genres.map((genre) => (
+													<div className="genre" key={genre.id}>
+														{genre.name}
+													</div>
+												))}
+											</div>
 										</div>
 									) : null}
 

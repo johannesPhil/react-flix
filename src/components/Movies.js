@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovies } from "../actions/moviesActions";
+import MovieCard from "./MovieCard";
 
 const Movies = () => {
 	const dispatch = useDispatch();
@@ -13,28 +13,18 @@ const Movies = () => {
 	}, [dispatch]);
 
 	return (
-		<div className="grid" style={{ margin: "1rem 0" }}>
-			{movies.slice(0, 8).map((movie) => (
-				<Link to={`/movie/${movie.id}`} key={movie.id} className="movie__Link">
-					<div className="movieCard">
-						<div className="movieCard__poster">
-							<img
-								src={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}
-							></img>
-						</div>
-						<div className="movieCard__details">
-							<p>{movie.title}</p>
-							<p>
-								{new Intl.DateTimeFormat("en-GB", {
-									month: "short",
-									year: "numeric",
-									day: "2-digit",
-								}).format(Date.parse(movie.release_date))}
-							</p>
-						</div>
-					</div>
-				</Link>
-			))}
+		<div>
+			{movies === null ? (
+				<div className="error">
+					<p>Error Fetching List</p>
+				</div>
+			) : (
+				<div className="grid" style={{ margin: "1rem 0" }}>
+					{movies.slice(0, 4).map((movie) => (
+						<MovieCard data={movie} key={movie.id} />
+					))}
+				</div>
+			)}
 		</div>
 	);
 };

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import '../App.css'
+import "../App.css";
 
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import allActions from "../actions";
+import { getMovies } from "../actions/moviesActions";
+import MovieCard from "../components/MovieCard";
 
 const Movies = () => {
 	const dispatch = useDispatch();
@@ -11,35 +12,19 @@ const Movies = () => {
 	const { movies } = useSelector((state) => state.movies);
 
 	useEffect(() => {
-		dispatch(allActions.moviesActions.getMovies());
+		dispatch(getMovies());
 	}, []);
 
 	return (
-		<div className='category'>
-		<div className="grid" style={{ margin: "1rem 0" }}>
-			{movies.map((movie) => (
-				<Link to={`/movie/${movie.id}`} key={movie.id}>
-					<div className="movieCard">
-						<div className="movieCard__poster">
-							<img
-								src={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}
-							></img>
-						</div>
-						<div className="movieCard__details">
-							<p>{movie.title}</p>
-							<p>
-								{new Intl.DateTimeFormat("en-GB", {
-									month: "short",
-									year: "numeric",
-									day: "2-digit",
-								}).format(Date.parse(movie.release_date))}
-							</p>
-						</div>
-					</div>
-				</Link>
-			))}
+		<div className="container">
+			<div className="wrapper">
+				<div className="grid" style={{ margin: "1rem 0" }}>
+					{movies.map((movie) => (
+						<MovieCard data={movie} key={movie.id} />
+					))}
+				</div>
 			</div>
-			</div>
+		</div>
 	);
 };
 

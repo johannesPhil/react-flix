@@ -6,10 +6,11 @@ import movieStore from "./store";
 
 import Home from "./pages/Home";
 import Favourites from "./pages/Favourites";
-import Trending from "./components/Trending";
+import Trending from "./pages/Trending";
 import TvSeries from "./pages/TvSeries";
 import Movies from "./pages/Movies";
 import Movie from "./pages/Movie";
+import Search from "./pages/Search";
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 					<Route path="/movies" component={Movies} exact />
 					<Route path="/movie/:id" component={Movie} />
 					<Route path="/favourites" component={Favourites} />
+					<Route path="/search" component={Search} />
 				</Switch>
 			</Router>
 		</Provider>

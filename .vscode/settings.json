@@ -4,6 +4,7 @@
 		"javascript": "javascriptreact"
 	},
 	"emmet.excludeLanguages": ["markdown"],
+	"editor.quickSuggestions.comments": true,
 	"css-auto-prefix.prefixes": {
 		"transform": ["webkit", "moz", "ms", "o"],
 		"transition": ["webkit", "moz", "ms", "o"],
